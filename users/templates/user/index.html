@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main</title>
+  </head>
+  <body>
+    <h1>
+      {% if request.user.is_authenticated %}
+        {{ request.user.username }}
+        <br />
+        <form action="{% url 'users:logout' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="خروج" />
+        </form>
+      {% else %}
+        <a href="{% url 'users:login' %}">ورود</a>
+        <a href="{% url 'users:signup' %}"></a>
+      {% endif %}
+    </h1>
+    {% for form in form %}
+    
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard</title>
+  </head>
+  <body>
+    <h1>
+      {% if request.user.is_authenticated %}
+        {{ request.user.username }}
+        <br />
+        {{ request.user.first_name }}
+        <br />
+        <form action="{% url 'users:logout' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="خروج" />
+        </form>
+      {% else %}
+        <h1>لاگین نیستی برو بیرون</h1>
+      {% endif %}
+    </h1>
+  </body>
+</html>
