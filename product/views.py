@@ -37,10 +37,10 @@ def add_to_cart(request, product_id):
         if not session_key:
             request.session.create()
             print("2")
-        cart, created = Cart.objects.create(session_key=session_key)
+        cart = Cart.objects.create(session_key=session_key)
         print("created")
 
-    cart_item, created = CartItem.objects.create(cart=cart, product=product)
+    cart_item = CartItem.objects.create(cart=cart, product=product)
     if not created:
         cart_item.quantity += 1
         cart_item.save()
@@ -61,6 +61,9 @@ def view_cart(request):
     return render(request, template_name="cart.html",context=
                   {"products":products,"total_price":total_price})
     
+def indexF(request):
+    return render(request, 'indexF.html')
+
 def shop(request):
     return render(request, 'shop.html')
 
@@ -68,4 +71,4 @@ def contact(request):
     return render(request, 'contact.html')
 
 def sign_up(request):
-    return render(request, 'sign_up.html')
+    return render(request, 'sign-up.html')
