@@ -58,9 +58,9 @@ def view_cart(request):
         request.session["selected"] = pr
 
     products_id = Cart.objects.get(session_key = request.session.session_key)
-    products_selected = CartItem.objects.get(cart_id=products_id.id)
-    products =  ProductInfo.objects.filter(id=products_selected.product_id)
-    print(products_id.id, "kkkkkkkkkkk", products_selected, products)
+    products_selected = CartItem.objects.values_list('product_id').filter(cart_id=products_id.id)
+    products =  ProductInfo.objects.filter(id__in=products_selected)
+    print(products_id, "kkkkkkkkkkk", products_selected, products)
     total_price= sum([item.price for item in products])
     return render(request, template_name="cart.html",context=
                   {"products":products,"total_price":total_price})
