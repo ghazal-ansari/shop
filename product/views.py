@@ -37,7 +37,6 @@ def add_to_cart(request, product_id):
         if not session_key:
             request.session.create()
             session_key = request.session.session_key
-            print("jjjjj", session_key)
         cart, created = Cart.objects.get_or_create(session_key=session_key)
 
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
@@ -57,9 +56,11 @@ def view_cart(request):
         pr = request.session.get("selected")
         pr.remove(data)
         request.session["selected"] = pr
-    sessions = request.session.get('selected',[])
-    print(sessions, request)
-    products = ProductInfo.objects.filter(id__in=sessions)
+
+    products_id = Cart.objects.get(session_key = request.session.session_key)
+    products_selected = CartItem.objects.get(cart_id=products_id.id)
+    products =  ProductInfo.objects.filter(id=products_selected.product_id)
+    print(products_id.id, "kkkkkkkkkkk", products_selected, products)
     total_price= sum([item.price for item in products])
     return render(request, template_name="cart.html",context=
                   {"products":products,"total_price":total_price})
