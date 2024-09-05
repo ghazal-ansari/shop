@@ -36,11 +36,12 @@ def add_to_cart(request, product_id):
         session_key = request.session.session_key
         if not session_key:
             request.session.create()
-            print("2")
-        cart = Cart.objects.create(session_key=session_key)
-        print("created")
+            session_key = request.session.session_key
+            print("jjjjj", session_key)
+        cart, created = Cart.objects.get_or_create(session_key=session_key)
 
-    cart_item = CartItem.objects.create(cart=cart, product=product)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    print(cart_item, "zzzz")
     if not created:
         cart_item.quantity += 1
         cart_item.save()
@@ -50,12 +51,14 @@ def add_to_cart(request, product_id):
 
 
 def view_cart(request):
+    
     if request.method == "POST":
         data = request.POST.get("product")
         pr = request.session.get("selected")
         pr.remove(data)
         request.session["selected"] = pr
     sessions = request.session.get('selected',[])
+    print(sessions, request)
     products = ProductInfo.objects.filter(id__in=sessions)
     total_price= sum([item.price for item in products])
     return render(request, template_name="cart.html",context=
