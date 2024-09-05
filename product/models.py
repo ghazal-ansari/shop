@@ -10,11 +10,7 @@ class ProductInfo(models.Model):
     name = models.CharField(max_length=70, verbose_name="نام ")
     description = models.TextField(verbose_name="توضیحات")
     created = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-    modified = models.DateTimeField(auto_now=True, verbose_name='تاریخ اپدیت')
     price = models.BigIntegerField(verbose_name='قیمت', default=0)
-    pr_date = models.DateTimeField(default=timezone.now, verbose_name='تاریخ تولید')
-    exp_date = models.DateTimeField(default=timezone.now, verbose_name="تاریخ انقضا")
-    brand = models.CharField(max_length=50, null=True, blank=True, verbose_name="برند")
     image = models.ImageField(upload_to='images/', verbose_name="تصویر", blank=True, null=True)  
 
     def __str__(self) -> str:
