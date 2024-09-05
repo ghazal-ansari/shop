@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ProductInfo, Cart, CartItem, Category
+from .models import ProductInfo, Cart, CartItem
 from .serializers import ProductSerializer
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -68,7 +68,7 @@ def indexF(request):
     return render(request, 'indexF.html')
 
 def shop(request):
-    return render(request, 'shop.html')
+    return render(request, 'index.html')
 
 def contact(request):
     return render(request, 'contact.html')

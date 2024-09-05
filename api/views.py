@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.http import JsonResponse
 from users.models import User
-from product.models import ProductInfo, Category
+from product.models import ProductInfo
 from rest_framework import status
 from users.serializers import UserSerializer
 from product.serializers import ProductSerializer

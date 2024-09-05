@@ -22,28 +22,34 @@
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-          <span class="dot"></span>
-          <div class="dots">
-              <span></span>
-              <span></span>
-              <span></span>
-          </div>
-      </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
+
 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                 
-              </div>
-          </div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{% url 'products:indexF' %}" class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="" style="width: 158px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="{% url 'products:indexF' %}" class="active">Home</a></li>
+                      <li><a href="{% url 'products:index' %}">Our Shop</a></li>
+                      <li><a href="{% url 'products:contact' %}">Contact Us</a></li>
+                      <li><a href="{% url 'products:sign-up' %}">Sign In</a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
   </header>
   <!-- ***** Header Area End ***** -->
 
@@ -80,7 +86,6 @@
                 <div class="item">
                     <div class="thumb">
                         <a href="{% url 'products:cart' %}"><img src="{% static 'images/shop/{{ product.image }}' %}" alt=""></a>
-                        <span class="price"><em>${{ product.original_price }}</em>${{ product.sale_price }}</span>
                     </div>
                     <div class="down-content">
                         <span class="category">{{ product.category }}</span>
