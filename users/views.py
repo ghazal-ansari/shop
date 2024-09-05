@@ -131,3 +131,19 @@ def verify_code(request):
     return render(request=request,template_name="registration/login.html",context={
         "form":login_form
     })        
+
+
+def indexF(request):
+    return render(request, 'indexF.html')
+
+def shop(request):
+    return render(request, 'index.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def sign_up(request):
+    return render(request, 'sign-up.html')
+
+def cart(request):
+    return render(request, 'cart.html')

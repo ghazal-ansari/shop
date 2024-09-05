@@ -7,8 +7,13 @@ app_name = 'users'
 urlpatterns = [
     path('', index,name='index'),
     path('dashboard/',dashboard_view,name= 'dashboard'),
-    path('login/',otp_login,name='login'),
+    path('login/',sign_up,name='login'),
     path('logout/',LogoutView.as_view(),name='logout'),
-    path('signup',signup,name='signup'),
     path('login/verify',verify_code,name='verify'),
+
+    # path('home/', indexF, name='indexF'),
+    # path('shop/', shop, name='shop'),  # Shop page
+    # path('cart/', cart, name='cart'),  # Cart page
+    # path('contact/', contact, name='contact'),  # Contact Us page
+    # path('sign-up/', sign_up, name='sign-up'),  # Sign Up (Sign In) page
 ]
