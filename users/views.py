@@ -18,11 +18,6 @@ from kavenegar import *
 
 # Create your views here.
 
-# def index(request):
-#     request.session['admin2'] = "admin khers"
-#     res = HttpResponse(request,"Set Cookie")
-#     res.set_cookie("admin2","admin2 hastam")
-#     return res
 #------------------------------------------------------------------------------------
 # @login_required
 # def dashboard_view(request):
@@ -62,61 +57,7 @@ from kavenegar import *
 #     return render(request, 'users/signin.html', {'form': form})
 
 #----------------------------------------------------------------------------------
-    
-# def send_otp(phone_number):
-#     code = randint(1000,9999)
-#     api_key = settings.API_KEY_SMS
-#     message = f'your code is {code}'
-#     url = f"https://api.kavenegar.com/v1/{api_key}/sms/send.json"
-#     data= {
-#         "receptor": phone_number,
-#         "message":message,
-#         "sender":"200050066"
-#     }
-#     res = requests.post(url=url,data=data)
-#     print(code)
-#     return code
-
-
-# def otp_login(request):
-#     if request.method == "POST":
-#         form_data = OtpForm(request.POST)
-#         if form_data.is_valid():
-#             c_data = form_data.cleaned_data
-#             print(c_data)
-#             try:
-#                 user  = User.objects.get(phone = c_data.get("phone"))
-#                 code = send_otp(user.phone)
-#                 request.session["code"] = code
-#                 form = VerifyCode()
-#                 return render(request=request,template_name='registration/verify.html',context={"form":form})
-#             except User.DoesNotExist:
-#                 pass
-
-    
-#     login_form = OtpForm()
-#     return render(request=request,template_name="registration/login.html",context={
-#         "form":login_form
-#     })
-
-
-# def verify_code(request):
-#     if request.method == "POST":
-#         form_data = VerifyCode(request.POST)
-#         if form_data.is_valid():
-#             c_data = form_data.cleaned_data
-#             print(c_data.get("code"))
-#             print(request.session.get("code"))
-#             print(type(c_data.get("code")))
-#             print(type(request.session.get("code")))
-#             if  str(request.session.get("code")) ==str(c_data.get("code")) :
-#                 print("welcome")
-#             else:
-#                 print("login fail")
-#     login_form = OtpForm()
-#     return render(request=request,template_name="registration/login.html",context={
-#         "form":login_form
-#     })        
+           
 
 
 def indexF(request):
