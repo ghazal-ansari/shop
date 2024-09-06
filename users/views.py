@@ -73,4 +73,5 @@ def cart(request):
     return redirect('product/cart.html')
     
 def sign_up(request):
-    return render(request, 'sign-up.html')
+    print("wwwwwwwww")
+    return render(request, 'usign-up.html')

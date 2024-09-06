@@ -84,6 +84,3 @@ def shop(request):
 
 def contact(request):
     return render(request, 'contact.html')
-
-def sign_up(request):
-    return render(request, 'sign-up.html')
