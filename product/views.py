@@ -64,6 +64,17 @@ def view_cart(request):
     total_price= sum([item.price for item in products])
     return render(request, template_name="cart.html",context=
                   {"products":products,"total_price":total_price})
+
+def remove(request):
+    if request.method == "POST":
+        
+        session_id = Cart.objects.get(session_key = request.session.session_key)
+        CartItem.objects.filter(cart_id=session_id).filter(product_id=request.POST.get('product')).delete()
+    return redirect('products:cart')
+
+def remove_all(request):
+    CartItem.objects.all().delete()
+    return redirect('products:cart')
     
 def indexF(request):
     return render(request, 'indexF.html')
