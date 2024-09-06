@@ -6,7 +6,7 @@ class LoginForm(forms.Form):
 class SignUpForm(forms.ModelForm):
     class Meta:
         model=User
-        fields=['username','password','first_name','last_name','national_code','role']
+        fields=['name', 'surname', 'username', 'email', 'address']
 
 
 class OtpForm(forms.Form):

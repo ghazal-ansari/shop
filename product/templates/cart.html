@@ -82,7 +82,7 @@
                             <button class="btn btn-light btn-sm">+</button>
                         </div> -->
                         <div>
-                            <form action="/product/remove_product" method="post">
+                            <form action="/product/remove_product/" method="post">
                                 {% csrf_token %}
                                 <input name="product" id="product" type="text" value="{{ product.id }}" hidden />
                                 <button type="submit" class="btn btn-outline-secondary btn-sm">Remove</button>
@@ -101,7 +101,7 @@
                     <p>Shipping: Free</p>
                     <hr>
                     <p class="font-weight-bold">Total: ${{ total_price }}</p>
-                    <a href="/product/remove_all" class="btn btn-outline-secondary btn-block mt-3">Checkout</a>
+                    <a href="/product/remove_all/" class="btn btn-outline-secondary btn-block mt-3">Checkout</a>
                 </div>
             </div>
         </div>
