@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
-from .forms import LoginForm , SignUpForm,OtpForm,VerifyCode
+from .forms import LoginForm , SignUpForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .models import User
@@ -23,38 +23,47 @@ from kavenegar import *
 # def dashboard_view(request):
 #     return render(request=request,template_name='user/dashboard.html')
 
-# def signup(request):
-#     if request.method == "POST":
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.set_password(form.cleaned_data['password'])
-#             user.save()
-#             login(request, user)
-#             return redirect('users:home')  
-#     else:
-#         form = SignUpForm()
+def signup(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
 
-#     return render(request, 'users/sign-up.html', {'form': form})
+        if password1 != password2:
+            return render(request, 'users/usign-up.html', {'error': "Passwords do not match"})
+
+        user = User.objects.create(
+            name=name,
+            surname=surname,
+            username=username,
+            email=email
+        )
+        user.set_password(password1)
+        user.save()
+
+        login(request, user)
+        return redirect('products:indexF')
+    return render(request, 'users/usign-up.html')
+
 
     
-# def signin(request):
-#     if request.method == "POST":
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#             user = authenticate(request, username=username, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('users:home')  
-#             else:
-#                 error_message = "Invalid username or password."
-#                 return render(request, 'user/signin.html', {'form': form, 'error': error_message})
-#     else:
-#         form = LoginForm()
+def signin(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-#     return render(request, 'users/signin.html', {'form': form})
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('products:indexF')
+        else:
+            return render(request, 'users/usign-up.html', {'error': "Invalid username or password"})
+
+    return render(request, 'users/usign-up.html')
+
 
 #----------------------------------------------------------------------------------
            
@@ -72,6 +81,6 @@ def contact(request):
 def cart(request):
     return redirect('product/cart.html')
     
-def sign_up(request):
-    print("wwwwwwwww")
-    return render(request, 'usign-up.html')
+# def sign_up(request):
+#     print("wwwwwwwww")
+#     return render(request, 'usign-up.html')

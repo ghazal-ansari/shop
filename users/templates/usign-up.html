@@ -1,4 +1,5 @@
 {% load static %}
+{% csrf_token %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +90,8 @@ https://templatemo.com/tm-589-lugx-gaming
         <!-- Left Form  -->
         <div class="col-lg-6">
           <div class="right-content">
-            <form id="contact-form" action="" method="post">
+            <form id="contact-form" action="{% url 'users:sign-in' %}" method="post">
+              {% csrf_token %}
               <div class="row">
                 <div class="col-lg-10">
                   <fieldset>
@@ -124,7 +126,8 @@ https://templatemo.com/tm-589-lugx-gaming
         <!-- Right Form -->
         <div class="col-lg-6">
           <div class="right-content">
-            <form id="contact-form" action="" method="post">
+            <form id="contact-form" action="{% url 'users:sign-up' %}" method="post">
+              {% csrf_token %}
               <div class="row">
                 <div class="col-lg-10">
                   <fieldset>

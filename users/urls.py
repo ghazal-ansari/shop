@@ -10,5 +10,7 @@ urlpatterns = [
     path('cart/', cart, name='cart'),  # Cart page
     path('shop/', shop, name='shop'),  # Shop page
     path('contact/', contact, name='contact'),  # Contact Us page
-    path('sign-up/', sign_up, name='sign-up'),  # Sign Up (Sign In) page
+    path('sign-up/', signup, name='sign-up'),  # Sign Up (Sign In) page
+    path('sign-uin/', signin, name='sign-in'),  # Sign Up (Sign In) page
+
 ]
