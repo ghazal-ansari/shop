@@ -12,7 +12,7 @@ class ProductInfo(models.Model):
     category = models.TextField(verbose_name='دسته بندی', null=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
     price = models.BigIntegerField(verbose_name='قیمت', default=0)
-    image = models.ImageField(upload_to='images/', verbose_name="تصویر", blank=True, null=True)  
+    image = models.ImageField(upload_to='images/shop', verbose_name="تصویر", blank=True, null=True)  
 
     def __str__(self) -> str:
         return self.name
