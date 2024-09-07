@@ -30,8 +30,8 @@ def add_to_cart(request, product_id):
     print("add_to_cart")
     product = get_object_or_404(ProductInfo, id=product_id)
 
-    if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(user=request.user)
+    if request.user.is_authenticated and False:
+        cart, created = Cart.objects.get_or_create(id=request.user)
         print("ok user 1")
     else:
         session_key = request.session.session_key
