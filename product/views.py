@@ -74,6 +74,19 @@ def remove(request):
         CartItem.objects.filter(cart_id=session_id).filter(product_id=request.POST.get('product')).delete()
     return redirect('products:cart')
 
+
+def product_list(request, category=None):
+    products = ProductInfo.objects.all()
+    
+    if category:
+        products = products.filter(category=category)
+
+    return render(request, 'shop/product_list.html', {
+        'products': products,
+        'selected_category': category,
+    })
+
+
 def remove_all(request):
     CartItem.objects.all().delete()
     return redirect('products:cart')

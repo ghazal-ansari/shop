@@ -66,20 +66,20 @@
 
   <div class="section trending">
       <div class="container">
-          <ul class="trending-filter">
-              <li>
-                  <a class="is_active" href="#!" data-filter="*">Shop All</a>
-              </li>
-              <li>
-                  <a href="#!" data-filter=".lac">Lip + Cheeks</a>
-              </li>
-              <li>
-                  <a href="#!" data-filter=".skn">Skin</a>
-              </li>
-              <li>
-                  <a href="#!" data-filter=".set">Sets</a>
-              </li>
-          </ul>
+        <ul class="trending-filter">
+            <li>
+                <a class="is_active" href="{% url 'product_list_' %}">Shop All</a>
+            </li>
+            <li>
+                <a href="{% url 'product_list_by_category' 'lac' %}" data-filter=".lac">Lip + Cheeks</a>
+            </li>
+            <li>
+                <a href="{% url 'product_list_by_category' 'skn' %}" data-filter=".skn">Skin</a>
+            </li>
+            <li>
+                <a href="{% url 'product_list_by_category' 'set' %}" data-filter=".set">Sets</a>
+            </li>
+        </ul>
           <div class="row trending-box">
             {% for product in products %}
             <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items {{ product.category|lower }}">

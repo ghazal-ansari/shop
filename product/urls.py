@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, view_cart, shop, contact, add_to_cart, indexF, remove,remove_all
+from .views import index, view_cart, shop, contact, add_to_cart, indexF, remove,remove_all, product_list
 from django.contrib.auth.views import LoginView, LogoutView
 
 app_name = 'products'
@@ -13,5 +13,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),  # Contact Us page
     #path('sign-up/', sign_up, name='sign-up'),  # Sign Up (Sign In) page
     path('remove_product/', remove, name='remove'),
-    path('remove_all/', remove_all)
+    path('remove_all/', remove_all),
+    path('category/<str:category>/', product_list, name='product_list_by_category'),
+    path('', product_list, name='product_list_'),
 ]
