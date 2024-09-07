@@ -81,7 +81,7 @@ def product_list(request, category=None):
     if category:
         products = products.filter(category=category)
 
-    return render(request, 'shop/product_list.html', {
+    return render(request, 'index.html', {
         'products': products,
         'selected_category': category,
     })
