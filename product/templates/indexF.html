@@ -41,7 +41,11 @@
                       <li><a href="{% url 'products:indexF' %}" class="active">Home</a></li>
                       <li><a href="{% url 'products:index' %}">Our Shop</a></li>
                       <li><a href="{% url 'products:contact' %}">Contact Us</a></li>
-                      <li><a href="{% url 'users:sign-up' %}">Sign In</a></li>
+                      {% if user.is_authenticated %}
+                          <li><a href="{% url 'users:dashboard' %}"><img src="{% static 'images/account.png' %}" alt="Profile" style="width: 35px; height: 25px;"></a></li>
+                      {% else %}
+                          <li><a href="{% url 'users:sign-up' %}">Sign In</a></li>
+                      {% endif %}
 
                   </ul>   
                     <a class='menu-trigger'>
@@ -83,53 +87,7 @@
     </div>
   </div>
 
-  <div class="features">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="{% static 'images/featured-01.png' %}" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Free Storage</h4>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="{% static 'images/featured-02.png' %}" alt="" style="max-width: 44px;">
-              </div>
-              <h4>User More</h4>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="{% static 'images/featured-03.png' %}" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Reply Ready</h4>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="{% static 'images/featured-04.png' %}" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Easy Layout</h4>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
+ 
   <div class="section trending">
     <div class="container">
       <div class="row">
@@ -145,52 +103,52 @@
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="{% url 'products:cart' %}"><img src="{% static 'images/summer lip trio (lip+cheek,set).jpg' %}" alt=""></a>
+              <a href="{% url 'products:index' %}"><img src="{% static 'images/summer lip trio (lip+cheek,set).jpg' %}" alt=""></a>
               <span class="price"><em>$28</em>$20</span>
             </div>
             <div class="down-content">
               <span class="category">Lip + Cheeks</span>
               <h4>The Summer Lip Trio</h4>
-              <a href="{% url 'products:cart' %}"><i class="fa fa-shopping-bag"></i></a>
+              <a href="{% url 'products:index' %}"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="{% url 'products:cart' %}"><img src="{% static 'images/the barrier set (skinsets).jpg' %}" alt=""></a>
+              <a href="{% url 'products:index' %}"><img src="{% static 'images/the barrier set (skinsets).jpg' %}" alt=""></a>
               <span class="price">$44</span>
             </div>
             <div class="down-content">
               <span class="category">Skin</span>
               <h4>The Barrier Set</h4>
-              <a href="{% url 'products:cart' %}"><i class="fa fa-shopping-bag"></i></a>
+              <a href="{% url 'products:index' %}"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="{% url 'products:cart' %}"><img src="{% static 'images/cleanser(pineapple refresh).jpg' %}" alt=""></a>
+              <a href="{% url 'products:index' %}"><img src="{% static 'images/cleanser(pineapple refresh).jpg' %}" alt=""></a>
               <span class="price"><em>$64</em>$44</span>
             </div>
             <div class="down-content">
               <span class="category">Skin</span>
               <h4>Pineapple Refresh</h4>
-              <a href="{% url 'products:cart' %}"><i class="fa fa-shopping-bag"></i></a>
+              <a href="{% url 'products:index' %}"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="item">
             <div class="thumb">
-              <a href="{% url 'products:cart' %}"><img src="{% static 'images/Blush (lip+cheek).jpg' %}" alt=""></a>
+              <a href="{% url 'products:index' %}"><img src="{% static 'images/Blush (lip+cheek).jpg' %}" alt=""></a>
               <span class="price">$32</span>
             </div>
             <div class="down-content">
               <span class="category">Lip + Cheeks</span>
               <h4>The Ppcjet Blush</h4>
-              <a href="{% url 'products:cart' %}"><i class="fa fa-shopping-bag"></i></a>
+              <a href="{% url 'products:index' %}"><i class="fa fa-shopping-bag"></i></a>
             </div>
           </div>
         </div>
@@ -214,72 +172,72 @@
       <div class="col-lg-2 col-md-6 col-sm-6">
         <div class="item">
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/rhode case (lip+cheek, featured).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/rhode case (lip+cheek, featured).jpg' %}" alt=""></a>
           </div>
           <div class="down-content">
               <span class="category">Lip + cheeks</span>
               <h4>Rhode Case</h4>
-              <a href="{% url 'products:shop' %}">Explore</a>
+              <a href="{% url 'products:index' %}">Explore</a>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-6 col-sm-6">
         <div class="item">
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/peptide lip treatments(lip+cheek).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/peptide lip treatments(lip+cheek).jpg' %}" alt=""></a>
           </div>
           <div class="down-content">
               <span class="category">Lip + Cheeks</span>
               <h4>Lip Treatments</h4>
-              <a href="{% url 'products:shop' %}">Explore</a>
+              <a href="{% url 'products:index' %}">Explore</a>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-6 col-sm-6">
         <div class="item">
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/the barrier set (skinsets).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/the barrier set (skinsets).jpg' %}" alt=""></a>
           </div>
           <div class="down-content">
               <span class="category">Skin</span>
               <h4>The Barrier Set</h4>
-              <a href="{% url 'products:shop' %}">Explore</a>
+              <a href="{% url 'products:index' %}">Explore</a>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-6 col-sm-6">
         <div class="item">
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/summer lip trio (lip+cheek,set).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/summer lip trio (lip+cheek,set).jpg' %}" alt=""></a>
           </div>
           <div class="down-content">
               <span class="category">Lip + Cheeks</span>
               <h4>Summer Lip Trio</h4>
-              <a href="{% url 'products:shop' %}">Explore</a>
+              <a href="{% url 'products:index' %}">Explore</a>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-6 col-sm-6">
         <div class="item">
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/Blush (lip+cheek).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/Blush (lip+cheek).jpg' %}" alt=""></a>
           </div>
           <div class="down-content">
               <span class="category">Lip + Cheeks</span>
               <h4>Pocket Blush</h4>
-              <a href="{% url 'products:shop' %}">Explore</a>
+              <a href="{% url 'products:index' %}">Explore</a>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-6 col-sm-6">
         <div class="item">
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/the coral duo (lip+cheek, sets).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/the coral duo (lip+cheek, sets).jpg' %}" alt=""></a>
           </div>
           <div class="down-content">
               <span class="category">Lip + Cheeks</span>
               <h4>The Coral Duo</h4>
-              <a href="{% url 'products:shop' %}">Explore</a>
+              <a href="{% url 'products:index' %}">Explore</a>
           </div>
         </div>
       </div>
@@ -300,7 +258,7 @@
         <div class="item">
           <h4>Skin</h4>
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/cleanser(pineapple refresh).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/cleanser(pineapple refresh).jpg' %}" alt=""></a>
           </div>
         </div>
       </div>
@@ -308,7 +266,7 @@
         <div class="item">
           <h4>Lip + Cheeks</h4>
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/the coral duo (lip+cheek, sets).jpg' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/the coral duo (lip+cheek, sets).jpg' %}" alt=""></a>
           </div>
         </div>
       </div>
@@ -316,7 +274,7 @@
         <div class="item">
           <h4>Sets</h4>
           <div class="thumb">
-            <a href="{% url 'products:shop' %}"><img src="{% static 'images/the rhode kit(skin).webp' %}" alt=""></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/the rhode kit(skin).webp' %}" alt=""></a>
           </div>
         </div>
       </div>

@@ -19,9 +19,8 @@ from kavenegar import *
 # Create your views here.
 
 #------------------------------------------------------------------------------------
-# @login_required
-# def dashboard_view(request):
-#     return render(request=request,template_name='user/dashboard.html')
+def dashboard(request):
+    return render(request, 'dashboard.html')
 
 def signup(request):
     if request.method == "POST":
@@ -32,8 +31,7 @@ def signup(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
 
-        if password1 != password2:
-            return render(request, 'usign-up.html', {'error': "Passwords do not match"})
+        
 
         user = User.objects.create(
             name=name,
@@ -80,6 +78,8 @@ def contact(request):
 
 def cart(request):
     return redirect('product/cart.html')
+
+
     
 # def sign_up(request):
 #     print("wwwwwwwww")
