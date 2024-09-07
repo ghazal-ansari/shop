@@ -85,7 +85,7 @@
             <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items {{ product.category|lower }}">
                 <div class="item">
                     <div class="thumb">
-                        <a href="{% url 'products:cart' %}"><img src="{% static 'images/shop/'|add:product.image %}" alt="{{ product.name }}"></a>
+                        <a href="{% url 'products:add_to_cart' product.id %}"><img src="{% static 'images/shop/'|add:product.image %}" alt="{{ product.name }}"></a>
                     </div>
                     <div class="down-content">
                         <span class="category">{{ product.category }}</span>

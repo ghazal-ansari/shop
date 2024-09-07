@@ -27,6 +27,7 @@ def index(request):
 
 
 def add_to_cart(request, product_id):
+    print("add_to_cart")
     product = get_object_or_404(ProductInfo, id=product_id)
 
     if request.user.is_authenticated:
@@ -57,6 +58,7 @@ def view_cart(request):
         pr.remove(data)
         request.session["selected"] = pr
 
+    print(request.session.session_key, "kwc", request.session)
     products_id = Cart.objects.get(session_key = request.session.session_key)
     products_selected = CartItem.objects.values_list('product_id').filter(cart_id=products_id.id)
     products =  ProductInfo.objects.filter(id__in=products_selected)
