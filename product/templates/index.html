@@ -68,16 +68,16 @@
       <div class="container">
         <ul class="trending-filter">
             <li>
-                <a class="is_active" href="{% url 'product_list' %}">Shop All</a>
+                <a class="is_active" href="{% url 'products:product_list' %}">Shop All</a>
             </li>
             <li>
-                <a href="{% url 'product_list_by_category' 'lac' %}" data-filter=".lac">Lip + Cheeks</a>
+                <a href="{% url 'products:product_list_by_category' 'lac' %}" data-filter=".lac">Lip + Cheeks</a>
             </li>
             <li>
-                <a href="{% url 'product_list_by_category' 'skn' %}" data-filter=".skn">Skin</a>
+                <a href="{% url 'products:product_list_by_category' 'skn' %}" data-filter=".skn">Skin</a>
             </li>
             <li>
-                <a href="{% url 'product_list_by_category' 'set' %}" data-filter=".set">Sets</a>
+                <a href="{% url 'products:product_list_by_category' 'set' %}" data-filter=".set">Sets</a>
             </li>
         </ul>
           <div class="row trending-box">
