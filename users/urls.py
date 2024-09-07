@@ -12,5 +12,6 @@ urlpatterns = [
     path('sign-up/', signup, name='sign-up'),  # Sign Up (Sign In) page
     path('sign-uin/', signin, name='sign-in'),  # Sign Up (Sign In) page
     path('dashboard/', dashboard, name='dashboard'), #Dashboard Page
+    path('logout/', user_logout, name='logout'),  #Log Out
 
 ]

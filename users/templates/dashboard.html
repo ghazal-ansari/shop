@@ -62,50 +62,27 @@
     </div>
 
     <!-- Cart Section Start -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="cart-items">
-                    {% for product in products %}
-                    <!-- Cart Item Start -->
-                    <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-3">
-                        <div class="item-details d-flex align-items-center">
-                            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid" style="width: 100px;">
-                            <div class="ml-3">
-                                <h6>{{ product.name }}</h6>
-                                <p class="text-muted">${{ product.price }}</p>
-                            </div>
-                        </div>
-                        <!-- <div class="quantity-controls">
-                            <button class="btn btn-light btn-sm">-</button>
-                            <span class="mx-2">{{ item.quantity }}</span>
-                            <button class="btn btn-light btn-sm">+</button>
-                        </div> -->
-                        <div>
-                            <form action="" method="post">
-                                {% csrf_token %}
-                                <input name="product" id="product" type="text" value="{{ product.id }}" hidden />
-                                <button type="submit" class="btn btn-outline-secondary btn-sm">Remove</button>
-                              </form>
-                        </div>
-                    </div>
-                    <!-- Cart Item End -->
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="cart-summary p-3 border">
-                    <h5 class="mb-3">Order Summary</h5>
-                    <p>Subtotal: ${{ total_price }}</p>
-                    <p>Shipping: Free</p>
-                    <hr>
-                    <p class="font-weight-bold">Total: ${{ total_price }}</p>
-                    <button class="btn btn-outline-secondary btn-block mt-3">Checkout</button>
-                </div>
-            </div>
-        </div>
+    
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+{% else %}
+<div class="container">
+        <h2>Dashboard</h2>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Surname:</strong> {{ user.surname }}</p>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Address:</strong> {{ user.address }}</p>
     </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div class="logout-btn">
+        <form action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
+{% endif %}
     <!-- Cart Section End -->
 
     <footer>

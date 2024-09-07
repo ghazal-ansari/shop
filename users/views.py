@@ -1,18 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
-from django.http import JsonResponse
-from .forms import LoginForm , SignUpForm
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
 from .models import User
-from .serializers import UserSerializer
-from rest_framework.decorators import api_view,permission_classes
-from rest_framework.response import Response
-from rest_framework import status
-from random import randint
-import requests
-from shop import settings
-from django.contrib import messages
-from kavenegar import *
+
 
 
 
@@ -20,7 +9,19 @@ from kavenegar import *
 
 #------------------------------------------------------------------------------------
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    if request.user.is_authenticated:
+        user = request.user
+        context = {
+            'user': user
+        }
+        return render(request, 'dashboard.html', context)
+    else:
+        return render(request, 'dashboard.html', {'error': "You must be logged in to access the dashboard."})
+
+
+def user_logout(request):
+    logout(request)
+    return render(request, 'indexF.html')
 
 def signup(request):
     if request.method == "POST":
@@ -58,7 +59,7 @@ def signin(request):
             login(request, user)
             return redirect('products:indexF')
         else:
-            return render(request, 'usign-up.html', {'error': "Invalid username or password"})
+            return render(request, 'dashboard.html', {'error': "Invalid username or password"})
 
     return render(request, 'usign-up.html')
 
