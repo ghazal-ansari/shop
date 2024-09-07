@@ -33,7 +33,7 @@ def signup(request):
         password2 = request.POST.get('password2')
 
         if password1 != password2:
-            return render(request, 'users/usign-up.html', {'error': "Passwords do not match"})
+            return render(request, 'usign-up.html', {'error': "Passwords do not match"})
 
         user = User.objects.create(
             name=name,
@@ -46,7 +46,7 @@ def signup(request):
 
         login(request, user)
         return redirect('products:indexF')
-    return render(request, 'users/usign-up.html')
+    return render(request, 'usign-up.html')
 
 
     
@@ -60,9 +60,9 @@ def signin(request):
             login(request, user)
             return redirect('products:indexF')
         else:
-            return render(request, 'users/usign-up.html', {'error': "Invalid username or password"})
+            return render(request, 'usign-up.html', {'error': "Invalid username or password"})
 
-    return render(request, 'users/usign-up.html')
+    return render(request, 'usign-up.html')
 
 
 #----------------------------------------------------------------------------------
