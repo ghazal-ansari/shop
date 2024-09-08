@@ -29,9 +29,7 @@ def signup(request):
         surname = request.POST.get('surname')
         username = request.POST.get('username')
         email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-
+        password1 = request.POST.get('password')
         
 
         user = User.objects.create(
@@ -54,7 +52,9 @@ def signin(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+        print(username, password, "cd")
+        user = authenticate(username=username, password=password)
+        print(user)
         if user is not None:
             login(request, user)
             return redirect('products:indexF')
