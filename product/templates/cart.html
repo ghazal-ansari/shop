@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Rhode - Cart</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/rlogo.jpg' %}">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-lugx-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+</head>
+
+<body>
+    <!-- Header Area Start -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'products:indexF' %}" class="logo">
+                            <img src="{% static 'images/logo.png' %}" alt="" style="width: 158px;">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                          <li><a href="{% url 'products:indexF' %}" class="active">Home</a></li>
+                          <li><a href="{% url 'products:index' %}">Our Shop</a></li>
+                          <li><a href="{% url 'products:contact' %}">Contact Us</a></li>
+                          <li><a href="{% url 'users:sign-up' %}">Sign In</a></li>
+                      </ul>   
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </header>
+    <!-- Header Area End -->
+
+    <div class="page-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Cart</h3>
+                    <span class="breadcrumb">Home > Cart</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Section Start -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-items">
+                    {% for product in products %}
+                    <!-- Cart Item Start -->
+                    <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-3">
+                        <div class="item-details d-flex align-items-center">
+                            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid" style="width: 100px;">
+                            <div class="ml-3">
+                                <h6>{{ product.name }}</h6>
+                                <p class="text-muted">${{ product.price }}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="quantity-controls">
+                            <button class="btn btn-light btn-sm">-</button>
+                            <span class="mx-2">{{ item.quantity }}</span>
+                            <button class="btn btn-light btn-sm">+</button>
+                        </div> -->
+                        <div>
+                            <form action="/product/remove_product/" method="post">
+                                {% csrf_token %}
+                                <input name="product" id="product" type="text" value="{{ product.id }}" hidden />
+                                <button type="submit" class="btn btn-outline-secondary btn-sm">Remove</button>
+                              </form>
+                        </div>
+                    </div>
+                    <!-- Cart Item End -->
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="cart-summary p-3 border">
+                    <h5 class="mb-3">Order Summary</h5>
+                    <p>Subtotal: ${{ total_price }}</p>
+                    <p>Shipping: Free</p>
+                    <hr>
+                    <p class="font-weight-bold">Total: ${{ total_price }}</p>
+                    <a href="/product/remove_all/" class="btn btn-outline-secondary btn-block mt-3">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Section End -->
+
+    <footer>
+        <div class="container-fluid">
+          <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+            <div class="social-icons mb-3">
+              <a href="https://www.linkedin.com/in/ghazal-ansari-327877311/" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/ghazal-ansari" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://t.me/QazalAnsari" target="_blank">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a href="https://www.instagram.com/not_.sonnet/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </section>
+        </div>
+      </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/owl-carousel.js' %}"></script>
+    <script src="{% static 'js/counter.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
