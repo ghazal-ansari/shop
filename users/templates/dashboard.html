@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Rhode - Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/rlogo.jpg' %}">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-lugx-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+</head>
+
+<body>
+    <!-- Header Area Start -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'users:indexF' %}" class="logo">
+                            <img src="{% static 'images/logo.png' %}" alt="" style="width: 158px;">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                          <li><a href="{% url 'users:indexF' %}" class="active">Home</a></li>
+                          <li><a href="{% url 'users:shop' %}">Our Shop</a></li>
+                          <li><a href="{% url 'users:contact' %}">Contact Us</a></li>
+                          {% if user.is_authenticated %}
+                          <li><a href="{% url 'users:dashboard' %}"><img src="{% static 'images/account.png' %}" alt="Profile" style="width: 35px; height: 25px;"></a></li>
+                      {% else %}
+                          <li><a href="{% url 'users:sign-up' %}">Sign In</a></li>
+                      {% endif %}
+                      </ul>   
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </header>
+    <!-- Header Area End -->
+
+    <div class="main-banner">
+        <div class="container">
+            <div class="text-center">
+                <div class="caption header-text">
+                    <h2>Dashboard</h2>
+                    <p>
+                        Name: {{ user.name }}<br>
+                        <strong>Surname:</strong> {{ user.surname }}<br>
+                        <strong>Username:</strong> {{ user.username }}<br>
+                        <strong>Email:</strong> {{ user.email }}<br>
+                        <strong>Address:</strong> {{ user.address }}
+                    </p>
+                    {% if user.is_authenticated %}
+                        <div class="d-flex justify-content-center">
+                            <form action="{% url 'users:logout' %}" method="post" class="d-inline-block" style="margin-left: 120px;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary btn-md">Logout</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+   
+
+    <footer>
+        <div class="container-fluid">
+          <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+            <div class="social-icons mb-3">
+              <a href="https://www.linkedin.com/in/ghazal-ansari-327877311/" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/ghazal-ansari" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://t.me/QazalAnsari" target="_blank">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a href="https://www.instagram.com/not_.sonnet/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </section>
+        </div>
+      </footer>
+    <!-- Scripts -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/owl-carousel.js' %}"></script>
+    <script src="{% static 'js/counter.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

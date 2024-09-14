@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Rhode - Contact</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/rlogo.jpg' %}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-lugx-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <!-- <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div> -->
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{% url 'indexF' %}" class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="" style="width: 158px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="{% url 'indexF' %}">Home</a></li>
+                      <li><a href="{% url 'shop' %}">Our Shop</a></li>
+                      <li><a href="{% url 'contact' %}" class="active">Contact Us</a></li>
+                      <li><a href="{% url 'sign_up' %}">Sign In</a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Contact Us</h3>
+          <span class="breadcrumb"><a href="{% url 'indexF' %}">Home</a>  >  Contact Us</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-page section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="left-text">
+            <div class="section-heading">
+              <h6>Contact Us</h6>
+              <h2>Say Hello!</h2>
+            </div>
+            <p>Welcome to Rhode, where luxury meets beauty. Discover our curated collection of high-quality cosmetics and skincare, crafted to enhance your natural glow and boost your confidence. Experience the perfect blend of elegance and effectiveness with Rhode.</p>
+            <div class="social-icons mb-3">
+              <a href="https://www.linkedin.com/in/ghazal-ansari-327877311/" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/ghazal-ansari" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://t.me/QazalAnsari" target="_blank">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a href="https://www.instagram.com/not_.sonnet/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-content">
+            <div class="row">
+              <div class="col-lg-12">
+                <div id="map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth" width="100%" height="325px" frameborder="0" style="border:0; border-radius: 23px;" allowfullscreen=""></iframe>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <footer>
+    
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/isotope.min.js' %}"></script>
+  <script src="{% static 'js/owl-carousel.js' %}"></script>
+  <script src="{% static 'js/counter.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>
